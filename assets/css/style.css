@@ -1,4 +1,6 @@
 ---
 ---
 
-@import "";
+@import 'bootstrap/bootstrap.scss';
+@import '_sass/_bootstrap_customization.scss';
+@import '_sass/_variables.scss';

@@ -1,0 +1,43 @@
+---
+---
+
+@import 'variables';
+@import 'bootstrap/bootstrap';
+@import 'bootstrap_customization';
+@import 'fontawesome/fontawesome';
+@import 'fontawesome/solid';
+@import 'fontawesome/brands';
+
+
+
+.page-header{
+  margin-bottom: .75rem;
+  width: 100%;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+.project-name{
+    text-emphasis: bold;
+    font-size: 3rem;
+}
+
+
+.site-footer{
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    width: 100%;
+}
+
+.footer-social{
+    text-align: center;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: .25rem;
+    padding-right: .25rem;
+}
+
+table {
+    @extend .table;
+}

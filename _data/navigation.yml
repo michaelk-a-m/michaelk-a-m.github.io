@@ -1,0 +1,11 @@
+- title: Home
+  url: /
+
+- title: Machine Learning
+  url: /machine-learning/
+
+- title: Data Visualisation
+  url: /visualisation/
+
+- title: About
+  url: /about

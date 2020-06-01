@@ -1,0 +1,7 @@
+{% if post.title %}
+    <h1 class="entry-title">
+    <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
+    </h1>
+    <h6>{{ post.date | date_to_string }}</h6>
+{% endif %}
+<div class="entry-content">{{ content }}</div>

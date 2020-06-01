@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Things Michael Thinks</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        {% for nav in site.data.navigation %}
+          {% if nav.sublinks != null %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ site.url }}{{ nav.url }}">{{ nav.title }}</a>
+              <ul>
+              {% for subcategory in nav.sublinks %}
+                <li class="nav-item"><a class="nav-link" href="{{ site.url }}{{ subcategory.url }}">{{ subcategory.subtitle }}</a></li>
+              {% endfor %}
+              </ul>
+            </li>
+          {% elsif nav.title == page.title %}
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ nav.url }}">{{ nav.title }}</a>
+            </li>
+          {% else %} 
+            <li class="nav-item">
+              <a class="nav-link" href="{{ site.url }}{{ nav.url }}">{{ nav.title }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+  </div>
+</nav> 
