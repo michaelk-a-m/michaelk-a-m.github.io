@@ -1,11 +1,8 @@
 - title: Home
   url: /
 
-- title: Machine Learning
-  url: /machine-learning/
-
-- title: Data Visualisation
-  url: /visualisation/
+- title: COVID-19 Dashboard
+  url: /covid19-dashboard
 
 - title: About
   url: /about
