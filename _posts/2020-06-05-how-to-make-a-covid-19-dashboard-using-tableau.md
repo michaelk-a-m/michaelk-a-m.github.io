@@ -20,7 +20,7 @@ published: true
 
 Back in March, I discovered that [John Hopkins University (JHU)](https://github.com/CSSEGISandData/COVID-19) has made a public dataset on COVID-19 cases globally. At that time, there were only several countries affected by the outbreak. However, as we have known, this virus has become a pandemic affecting the whole world. However, the impact on each country is different. My purpose was to display the overview of the infection and severity at a country level and how it compares to the reset of the world. The dataset has been updated regularly by the JHU team. For each country and date, we have the following cumulative count of `confirmed cases`, `deaths`, and `recovered`. Using Tableau Desktop, I developed a simple COVID-19 dashboard to show the prevalence and monitor the situation at the country level. The screenshot below is the final output for the default screen size or you can check the [COVID-19 Dashboard page]({{site.url}}/covid19-dashboard) for the actual dashboard. 
 
-![alt text]({{ site.url }}/images/covid19-tableau/final-dashboard-default.jpg "Final COVID-19 Tableau Dashboard")
+![alt text]({{ site.url }}/images/covid19-tableau/final-dashboard-default.JPG "Final COVID-19 Tableau Dashboard")
 
 
 ## Merging the Datasets
@@ -105,71 +105,71 @@ On my final dashboard, I have created the following worksheets or components:
 ### World Map
 The first and foremost layer that will be the cornerstone of this dashboard is the geographical mapping. The map will display the latest number of confirmed cases of the countries. I have played with two approaches: either using dots to represent the countries with sizes or colours to represent the infection number or choropleth maps with the colour to represent the infection. I have decided that using the choropleth is better because the dots can be misplaced or stacked for smaller countries and users might have a hard time to find these countries. Below is the setup of the columns and measures for my map worksheet.
 
-![alt text]({{ site.url }}/images/covid19-tableau/map-layer.jpg "World Map Worksheet Set up")
+![alt text]({{ site.url }}/images/covid19-tableau/map-layer.JPG "World Map Worksheet Set up")
 
 Someting to note, I have tried using the number of confirmed cases but the colour grading was not clear and seemed rather bleak due to a very high number of cases on one country. This means only one country with dark red colour and the others with similar light red. Getting inspiration from other maps, I have decided to change it into ordinal sequence based on the rank of the confirmed cases. Here is the table calculation to produce the rank.
 
-![alt text]({{ site.url }}/images/covid19-tableau/map-rank-confirmed.jpg "Set up the rank for the colour sequence")
+![alt text]({{ site.url }}/images/covid19-tableau/map-rank-confirmed.JPG "Set up the rank for the colour sequence")
 
 Now it is important to filter only by the latest/most recent cases, therefore I added a filter by the latest date to have this. Otherwise, you will have the sum of all cumulative cases from the whole dataset.
-![alt text]({{ site.url }}/images/covid19-tableau/map-filter.jpg "Filter the latest number")
+![alt text]({{ site.url }}/images/covid19-tableau/map-filter.JPG "Filter the latest number")
 
 ### Daily New Cases (Tool-tip)
 There is another layer I want to place in the tooltip of the main map. I want users to be able to see the daily new cases chart for the last 4 weeks. The screenshot below shows how I configure the chart.
 
-![alt text]({{ site.url }}/images/covid19-tableau/daily-new-cases.jpg "Daily new cases chart")
+![alt text]({{ site.url }}/images/covid19-tableau/daily-new-cases.JPG "Daily new cases chart")
 
 The measure is derived from a table calculation which is the difference of the confirmed cases from the previous day.
-![alt text]({{ site.url }}/images/covid19-tableau/daily-new-cases-table-calc.jpg "Tooltip setting")
+![alt text]({{ site.url }}/images/covid19-tableau/daily-new-cases-table-calc.JPG "Tooltip setting")
 
 To make sure that we only have the last 4 weeks, I also created a new filter using the relative date. 
-![alt text]({{ site.url }}/images/covid19-tableau/daily-new-cases-filter.jpg "Tooltip setting")
+![alt text]({{ site.url }}/images/covid19-tableau/daily-new-cases-filter.JPG "Tooltip setting")
 
 After finishing up with the worksheet, we have to insert this on the tooltip of the main map. There is an option to "Insert > [Sheet Name]" so that the chart will show up when a user hovers on a country.
-![alt text]({{ site.url }}/images/covid19-tableau/tooltip-setting.jpg "Tooltip setting")
+![alt text]({{ site.url }}/images/covid19-tableau/tooltip-setting.JPG "Tooltip setting")
 
 ### Highest Confirmed Cases
 The next worksheet is the overall information of top 10 countries and should not be affected by the country filter on the dashboard. To create this layer, we just need to use the SUM(CONFIRMED) as a measure with the latest date filter (similar to the World Map). See the following screenshot for the guide.  
-![alt text]({{ site.url }}/images/covid19-tableau/highest-confirmed-list.jpg "Top 10 countries with highest confirmed cases")
+![alt text]({{ site.url }}/images/covid19-tableau/highest-confirmed-list.JPG "Top 10 countries with highest confirmed cases")
 
 To only pick the first 10, I add the filter using the `confirmed` measure and only pick the top 10.
-![alt text]({{ site.url }}/images/covid19-tableau/top-10-country-filter.jpg "Filter countries based on the top 10 confirmed cases")
+![alt text]({{ site.url }}/images/covid19-tableau/top-10-country-filter.JPG "Filter countries based on the top 10 confirmed cases")
 
 ### Highest Fatality Rate
 Instead of displaying just the number of fatalities by country like the confirmed cases, I want to show the fatality/death rate. This fatality rate is a relative measure of the number of deaths compared to the number of confirmed cases. Below is the simple formula to generate the calculation.
-![alt text]({{ site.url }}/images/covid19-tableau/death-rate.jpg "Create new measure: fatality rate")
+![alt text]({{ site.url }}/images/covid19-tableau/death-rate.JPG "Create new measure: fatality rate")
 
 I tried to do the similar chart, however I can't do simple sort and filter like before. Therefore, I decided to create a boolean measure that indicates whether the record is Top 10 or not. Here is the formula:
-![alt text]({{ site.url }}/images/covid19-tableau/top-10.jpg "Create new measure: Top 10 (True or False)")
+![alt text]({{ site.url }}/images/covid19-tableau/top-10.JPG "Create new measure: Top 10 (True or False)")
 
 I also filter the countries showing in Top 10 if they have at least 100 confirmed cases. This to signify the fatality rate measure for countries with higher number of cases. Obviously, 100 is arbitrary so this can be changed as required.
-![alt text]({{ site.url }}/images/covid19-tableau/highest-death-rate-filter.jpg "Filter countries with at least 100 confirmed cases")
+![alt text]({{ site.url }}/images/covid19-tableau/highest-death-rate-filter.JPG "Filter countries with at least 100 confirmed cases")
 
 Afterwards, after putting the measures together, I filtered the records in the table based on the Top 10 boolean variable.
-![alt text]({{ site.url }}/images/covid19-tableau/top-10-filter.jpg "Filter by top 10")
+![alt text]({{ site.url }}/images/covid19-tableau/top-10-filter.JPG "Filter by top 10")
 
 ### Highest Recovery Rate
 Similar to death/fatality rate, I created a `recovery rate` which is the number of recovered divided by the number of confirmed cases. 
-![alt text]({{ site.url }}/images/covid19-tableau/recovery-rate.jpg "Top 10 countries with highest recovery rate")
+![alt text]({{ site.url }}/images/covid19-tableau/recovery-rate.JPG "Top 10 countries with highest recovery rate")
 
 Since we have created the Top 10 boolean measure, we can reuse the filter alongside the at least 100 confirmed cases filter. 
 
 ### Confirmed Chart
 The next component is the time series chart of cumulative confirmed cases. It's a simple line chart with the `date` on x-axis/column and the `confirmed` on y-axis/row. 
-![alt text]({{ site.url }}/images/covid19-tableau/confirmed-cases.jpg "Confirmed chart")
+![alt text]({{ site.url }}/images/covid19-tableau/confirmed-cases.JPG "Confirmed chart")
 
 ### Fatalities Chart
 Similar to the confirmed chart, we can copy-paste the previous worksheet and create the cumulative fatalities. Again, it's a simple line chart with the `date` on x-axis and the `deaths` on y-axis.
-![alt text]({{ site.url }}/images/covid19-tableau/deaths.jpg "Fatalities chart")
+![alt text]({{ site.url }}/images/covid19-tableau/deaths.JPG "Fatalities chart")
 
 ### Recovered Chart
 The recovered chart is again the same with the previous two. Here is the setting. 
-![alt text]({{ site.url }}/images/covid19-tableau/recovered.jpg "Recovered chart")
+![alt text]({{ site.url }}/images/covid19-tableau/recovered.JPG "Recovered chart")
 
 
 ### Country Selection
 Finally, I create a worksheet to show the country selected from the map or filter. This just acts as a label for users to see which country's statistics are displayed on the dashboard.
-![alt text]({{ site.url }}/images/covid19-tableau/title-filter.jpg "Country Selection")
+![alt text]({{ site.url }}/images/covid19-tableau/title-filter.JPG "Country Selection")
 
 
 ## Final COVID-19 Dashboard
