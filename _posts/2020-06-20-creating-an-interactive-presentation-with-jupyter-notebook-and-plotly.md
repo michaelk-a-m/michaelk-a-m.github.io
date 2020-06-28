@@ -22,7 +22,7 @@ published: true
 Let's say you have performed some analysis using Jupyter notebook and produced some great visualisations to back up your finding. How would you present this to your stakeholders and other people? One great way to ace this is to convert your jupyter notebook and plotly graphs to an interactive presentation that can impress people.
 
 # Introduction
-I learned on creating slides from Jupyter Notebook from [Tahsin Mayeesha's medium post](https://medium.com/learning-machine-learning/present-your-data-science-projects-with-jupyter-slides-75f20735eb0f). However, I was curious to see if I can incorporate interactive graphs from Plotly in the slides. Therefore, I wrote this post to share what I've learned. 
+I learned on creating slides using Jupyter Notebook from [Tahsin Mayeesha's medium post](https://medium.com/learning-machine-learning/present-your-data-science-projects-with-jupyter-slides-75f20735eb0f). However, I was curious to see if I can incorporate interactive graphs from Plotly in the slides. Therefore, I wrote this post to share what I've learned. 
 
 For this post, I will use the [Titanic dataset from Kaggle](https://www.kaggle.com/c/titanic). This dataset is a classic dataset used to learn machine learning models on classification problems.
 
@@ -43,9 +43,9 @@ In Jupyter Notebook, each cell can play a part in the presentation slides. To se
 
 
 Changing the view will allow you to set what type of slides you want for each cell. There are 5 Slide Types you can select:
-* **Slide**. This is the main content of the slide. You can place markdown, visuals, or even code here.
-* **Sub-Slide**. I will consider this as a new slide with transition animation. You have to use the down arrow navigation to access it from the main slide.
-* **Fragment**. This will be a part of the main slide. For example, one cell with the heading will be set as Slide and the visualisation will be set as Fragment. The fragment will be inside the main slide but with fade in transition.
+* **Slide**. This is the main content of a slide. You can place markdown, visuals, or even code here.
+* **Sub-Slide**. I will consider this as a new slide with transition animation. You have to use the down arrow navigation to access it from the main slide (Slide type).
+* **Fragment**. This will be a part or component of the immediate previous cell with Slide Type. For example, one cell with the heading will be set as Slide and the visualisation will be set as Fragment. The fragment will be inside the main slide but with a fade-in transition.
 * **Skip**. This cell will not be shown on the slides. Perfect for code and comment cells that you won't show. Be aware that you can't put skip for your visualisation code because the output will not be shown as well.
 * **Notes**. This will create Speaker notes, but I haven't tried this function. From the [NbConvert reference](https://nbconvert.readthedocs.io/en/latest/usage.html), you need to have a local copy of the Reveal.JS file to allow you having a presenter view with the notes. 
 
@@ -79,8 +79,8 @@ From searching online, I found tips from [Github forum](https://github.com/jupyt
 If you use plotly, then you need to pay attention in this section. Otherwise, your plotly graphs won't show up in the slides.
 
 Plotly will require its JavaScript file (`plotly.js`) to produce the graph. There are three options you can choose:
-1. Local copy of JavaScript file. This is the easiest and simplest way to ensure the Plotly graphs to work. You can download the latest JS file from this [link](https://cdn.plot.ly/plotly-latest.min.js) and rename it into plotly.js. This file needs to be in the same folder or directory with the resulting HTML slides file. 
-2. Refer to CDN online. This is a great option if you want a lightweight HTML file and have a constant access to the Internet. This is perfect if you want to embed the slides on a website. To do this, create a new code cell at the beginning, include this code here:
+1. A local copy of JavaScript file. This is the easiest and simplest way to ensure the Plotly graphs to work. You can download the latest JS file from this [link](https://cdn.plot.ly/plotly-latest.min.js) and rename it into plotly.js. This file needs to be in the same folder or directory with the resulting HTML slides file. 
+2. Refer to CDN online. This is a great option if you want a lightweight HTML file and have constant access to the Internet. This is perfect if you want to embed the slides on a website. To do this, create a new code cell at the beginning, include this code here:
 ```python
 from IPython.display import Javascript
 Javascript(
@@ -115,6 +115,6 @@ If you check your directory, the html version of your notebook will be there. Yo
 For me personally, I found that  using `--post serve`, I could not terminate the server using Ctrl-C as described even after many tries. However, I also found that I can omit this in my command prompt and still get the HTML slides file.  
 
 # Final Output of the Slides
-Here is the following slides I produced from my jupyter notebook that you can find on [GitHub](https://github.com/michaelk-a-m/TitanicSurvival/blob/master/jupyter-slides/titanic_survival_slides.ipynb)
+Here are the following slides I produced from my jupyter notebook that you can find on [GitHub](https://github.com/michaelk-a-m/TitanicSurvival/blob/master/jupyter-slides/titanic_survival_slides.ipynb)
 <iframe src="{{ site.url }}/uploads/jupyter-slides/titanic_survival_slides.slides.html" width="100%" height="700rem"></iframe>
 
