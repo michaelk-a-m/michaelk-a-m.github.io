@@ -1,7 +1,7 @@
 ---
 id: 131
 title: Creating an Interactive Presentation with Jupyter Notebook and Plotly
-date: 2020-06-29
+date: 2020-06-28
 author: michaelkam
 layout: post
 categories:
